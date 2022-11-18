@@ -22,6 +22,7 @@ class MyProvider extends ChangeNotifier {
       newBurgerList.add(burgerModle);
       burgerList = newBurgerList;
     });
+    notifyListeners();
   }
 
   get throwBurgerList {
@@ -47,6 +48,7 @@ class MyProvider extends ChangeNotifier {
       newRecipeList.add(recipeModle);
       recipeList = newRecipeList;
     });
+    notifyListeners();
   }
 
   get throwRecipeList {
@@ -72,6 +74,7 @@ class MyProvider extends ChangeNotifier {
       newPizzaList.add(pizzaModle);
       pizzaList = newPizzaList;
     });
+    notifyListeners();
   }
 
   get throwPizzaList {
@@ -97,6 +100,7 @@ class MyProvider extends ChangeNotifier {
       newDrinkList.add(drinkModle);
       drinkList = newDrinkList;
     });
+    notifyListeners();
   }
 
   get throwDrinkList {
@@ -110,17 +114,18 @@ class MyProvider extends ChangeNotifier {
   Future<void> getFoodList() async {
     List<FoodModle> newFoodModleList = [];
     QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('food').get();
+        await FirebaseFirestore.instance.collection('foods').get();
     querySnapshot.docs.forEach((element) {
       foodModle = FoodModle(
         image: element['image'],
         name: element['name'],
         price: element['price'],
       );
-      print(drinkModle.name);
+      print(foodModle.name);
       newFoodModleList.add(foodModle);
-      newFoodModleList = newFoodModleList;
+      foodModeList = newFoodModleList;
     });
+    notifyListeners();
   }
 
   get throwFoodModleList {

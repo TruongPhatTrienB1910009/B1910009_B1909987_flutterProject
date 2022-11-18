@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orderfood/models/categories_modle.dart';
+import 'package:orderfood/models/food_modle.dart';
 import 'package:orderfood/provider/my_provider.dart';
 import 'package:orderfood/screen/auth/auth_manager.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,8 @@ class _HomePageState extends State<HomePage> {
   List<CategoriesModle> recipeList = [];
   List<CategoriesModle> pizzaList = [];
   List<CategoriesModle> drinkList = [];
+
+  List<FoodModle> singleFoodList = [];
 
   Widget categoriesContainer({required String image, required String name}) {
     return Column(
@@ -59,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           CircleAvatar(
             radius: 60,
-            backgroundImage: AssetImage(image),
+            backgroundImage: NetworkImage(image),
           ),
           ListTile(
             leading: Text(
@@ -200,6 +203,10 @@ class _HomePageState extends State<HomePage> {
     //
     provider.getDrinkCategory();
     drinkList = provider.throwDrinkList;
+
+    //
+    provider.getFoodList();
+    singleFoodList = provider.throwFoodModleList;
 
     return Scaffold(
       drawer: Drawer(
@@ -359,28 +366,37 @@ class _HomePageState extends State<HomePage> {
               mainAxisSpacing: 20,
               shrinkWrap: false,
               primary: false,
-              children: [
-                bottonContainer(
-                  image: 'images/1.png',
-                  name: 'burger1',
-                  price: 12,
-                ),
-                bottonContainer(
-                  image: 'images/1.png',
-                  name: 'burger1',
-                  price: 12,
-                ),
-                bottonContainer(
-                  image: 'images/1.png',
-                  name: 'burger1',
-                  price: 12,
-                ),
-                bottonContainer(
-                  image: 'images/1.png',
-                  name: 'burger1',
-                  price: 12,
-                ),
-              ],
+              children: singleFoodList
+                  .map(
+                    (e) => bottonContainer(
+                      image: e.image,
+                      price: e.price,
+                      name: e.name,
+                    ),
+                  )
+                  .toList(),
+              // children: [
+              //   bottonContainer(
+              //     image: 'images/1.png',
+              //     name: 'burger1',
+              //     price: 12,
+              //   ),
+              //   bottonContainer(
+              //     image: 'images/1.png',
+              //     name: 'burger1',
+              //     price: 12,
+              //   ),
+              //   bottonContainer(
+              //     image: 'images/1.png',
+              //     name: 'burger1',
+              //     price: 12,
+              //   ),
+              //   bottonContainer(
+              //     image: 'images/1.png',
+              //     name: 'burger1',
+              //     price: 12,
+              //   ),
+              // ],
             ),
           )
         ],
