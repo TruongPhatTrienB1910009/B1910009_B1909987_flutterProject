@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:orderfood/main.dart';
+import 'package:orderfood/screen/welcome_page.dart';
 import 'package:orderfood/screen/widget/my_text_field.dart';
 
 class Signup extends StatefulWidget {
@@ -38,6 +39,7 @@ class _SignupState extends State<Signup> {
         "userid": userCredential.user?.uid,
         "password": password.text.trim(),
       });
+      print("hi");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -212,11 +214,17 @@ class _SignupState extends State<Signup> {
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        // buttonCancel(),
                         button(
-                          ontap: () {},
                           buttonName: "Cancel",
                           color: Colors.grey,
                           textColor: Colors.black,
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => WelcomePage()));
+                          },
                         ),
                         SizedBox(
                           width: 10,

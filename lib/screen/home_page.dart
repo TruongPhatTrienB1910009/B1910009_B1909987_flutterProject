@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:orderfood/models/categories_modle.dart';
+import 'package:orderfood/provider/my_provider.dart';
+import 'package:orderfood/screen/auth/auth_manager.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,6 +12,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<CategoriesModle> burgerList = [];
+  List<CategoriesModle> recipeList = [];
+  List<CategoriesModle> pizzaList = [];
+  List<CategoriesModle> drinkList = [];
+
   Widget categoriesContainer({required String image, required String name}) {
     return Column(
       children: [
@@ -16,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           height: 80,
           width: 80,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(image)),
+            image: DecorationImage(image: NetworkImage(image)),
             color: Colors.grey,
             borderRadius: BorderRadius.circular(10),
           ),
@@ -118,8 +127,79 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget burger() {
+    return Row(
+      children: burgerList
+          .map(
+            (e) => categoriesContainer(
+              image: e.image,
+              name: e.name,
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  Widget recipe() {
+    return Row(
+      children: recipeList
+          .map(
+            (e) => categoriesContainer(
+              image: e.image,
+              name: e.name,
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  Widget pizza() {
+    return Row(
+      children: pizzaList
+          .map(
+            (e) => categoriesContainer(
+              image: e.image,
+              name: e.name,
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  Widget drink() {
+    return Row(
+      children: drinkList
+          .map(
+            (e) => categoriesContainer(
+              image: e.image,
+              name: e.name,
+            ),
+          )
+          .toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    MyProvider provider = Provider.of<MyProvider>(context);
+
+    final authprovider = Provider.of<AuthManager>(context);
+    //
+    provider.getBurgerCategory();
+    burgerList = provider.throwBurgerList;
+
+    //
+    provider.getRecipeCategory();
+    recipeList = provider.throwRecipeList;
+
+    //
+    // provider.getPizzaCategory();
+    // pizzaList = provider.throwPizzaList;
+
+    //
+    provider.getDrinkCategory();
+    drinkList = provider.throwDrinkList;
+
     return Scaffold(
       drawer: Drawer(
         child: Container(
@@ -178,9 +258,25 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.lock,
                   name: "Change",
                 ),
-                drawerItem(
-                  icon: Icons.exit_to_app,
-                  name: "Log out",
+                // drawerItem(
+                //   icon: Icons.exit_to_app,
+                //   name: "Log out",
+                // ),
+                ListTile(
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Log out",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: () {
+                    authprovider.logout();
+                  },
                 ),
               ],
             ),
@@ -225,26 +321,30 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                categoriesContainer(
-                  image: 'images/1.png',
-                  name: 'All',
-                ),
-                categoriesContainer(
-                  image: 'images/2.png',
-                  name: 'Burger',
-                ),
-                categoriesContainer(
-                  image: 'images/3.png',
-                  name: 'Recipes',
-                ),
-                categoriesContainer(
-                  image: 'images/4.png',
-                  name: 'Pizza',
-                ),
-                categoriesContainer(
-                  image: 'images/5.png',
-                  name: 'Drink',
-                ),
+                burger(),
+                recipe(),
+                pizza(),
+                drink(),
+                // categoriesContainer(
+                //   image: 'images/1.png',
+                //   name: 'All',
+                // ),
+                // categoriesContainer(
+                //   image: 'images/2.png',
+                //   name: 'Burger',
+                // ),
+                // categoriesContainer(
+                //   image: 'images/3.png',
+                //   name: 'Recipe',
+                // ),
+                // categoriesContainer(
+                //   image: 'images/4.png',
+                //   name: 'Pizza',
+                // ),
+                // categoriesContainer(
+                //   image: 'images/5.png',
+                //   name: 'Drink',
+                // ),
               ],
             ),
           ),
