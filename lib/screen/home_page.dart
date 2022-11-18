@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 20),
-          height: 80,
-          width: 80,
+          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+          height: 60,
+          width: 70,
           decoration: BoxDecoration(
             image: DecorationImage(image: NetworkImage(image)),
             color: Colors.grey,
@@ -31,12 +31,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 8,
         ),
         Text(
           name,
+          textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             color: Colors.white,
           ),
         )
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   Widget bottonContainer(
       {required String image, required int price, required String name}) {
     return Container(
-      height: 270,
+      height: 240,
       width: 220,
       decoration: BoxDecoration(
         color: Color(0xff3a3e3e),
@@ -193,8 +194,8 @@ class _HomePageState extends State<HomePage> {
     recipeList = provider.throwRecipeList;
 
     //
-    // provider.getPizzaCategory();
-    // pizzaList = provider.throwPizzaList;
+    provider.getPizzaCategory();
+    pizzaList = provider.throwPizzaList;
 
     //
     provider.getDrinkCategory();
@@ -299,7 +300,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Search Food",
@@ -312,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                 fillColor: Color(0xff3a3e3e),
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(50),
                 ),
               ),
             ),
@@ -349,8 +350,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            height: 510,
+            margin: EdgeInsets.symmetric(horizontal: 1),
+            height: 500,
             child: GridView.count(
               crossAxisCount: 2,
               childAspectRatio: 0.8,

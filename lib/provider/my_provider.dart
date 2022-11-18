@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:orderfood/models/categories_modle.dart';
+import 'package:orderfood/models/food_modle.dart';
 
 class MyProvider extends ChangeNotifier {
   List<CategoriesModle> burgerList = [];
@@ -53,29 +54,29 @@ class MyProvider extends ChangeNotifier {
   }
 
   //////////////////////////// 3nd categories ////////////////////
-  // List<CategoriesModle> pizzaList = [];
-  // late CategoriesModle pizzaModle;
-  // Future<void> getPizzaCategory() async {
-  //   List<CategoriesModle> newPizzaList = [];
-  //   QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-  //       .collection('categories')
-  //       .doc('v8DWTDXufnJ7dEvmEp3F')
-  //       .collection('pizza')
-  //       .get();
-  //   querySnapshot.docs.forEach((element) {
-  //     pizzaModle = CategoriesModle(
-  //       image: element['image'],
-  //       name: element['name'],
-  //     );
-  //     print(pizzaModle.name);
-  //     newPizzaList.add(pizzaModle);
-  //     pizzaList = newPizzaList;
-  //   });
-  // }
+  List<CategoriesModle> pizzaList = [];
+  late CategoriesModle pizzaModle;
+  Future<void> getPizzaCategory() async {
+    List<CategoriesModle> newPizzaList = [];
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('categories')
+        .doc('v8DWTDXufnJ7dEvmEp3F')
+        .collection('pizza')
+        .get();
+    querySnapshot.docs.forEach((element) {
+      pizzaModle = CategoriesModle(
+        image: element['image'],
+        name: element['name'],
+      );
+      print(pizzaModle.name);
+      newPizzaList.add(pizzaModle);
+      pizzaList = newPizzaList;
+    });
+  }
 
-  // get throwPizzaList {
-  //   return pizzaList;
-  // }
+  get throwPizzaList {
+    return pizzaList;
+  }
 
   //////////////////////////// 4nd categories ////////////////////
   List<CategoriesModle> drinkList = [];
@@ -100,5 +101,29 @@ class MyProvider extends ChangeNotifier {
 
   get throwDrinkList {
     return drinkList;
+  }
+
+/////////////////////////////////////////////////////////////////
+
+  List<FoodModle> foodModeList = [];
+  late FoodModle foodModle;
+  Future<void> getFoodList() async {
+    List<FoodModle> newFoodModleList = [];
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('food').get();
+    querySnapshot.docs.forEach((element) {
+      foodModle = FoodModle(
+        image: element['image'],
+        name: element['name'],
+        price: element['price'],
+      );
+      print(drinkModle.name);
+      newFoodModleList.add(foodModle);
+      newFoodModleList = newFoodModleList;
+    });
+  }
+
+  get throwFoodModleList {
+    return foodModeList;
   }
 }
