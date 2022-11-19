@@ -48,7 +48,7 @@ class CartPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(
-                    "\$ $price",
+                    "$price.000đ",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -89,7 +89,7 @@ class CartPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "\$ $total",
+              "$total.000đ",
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
             Container(

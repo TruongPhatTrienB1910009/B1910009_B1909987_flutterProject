@@ -28,21 +28,19 @@ class BottomContainer extends StatelessWidget {
               radius: 60,
               backgroundImage: NetworkImage(image),
             ),
-            ListTile(
-              leading: Text(
-                name,
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-              trailing: Text(
-                "\$ $price",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
+            Text(
+              name,
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+            Text(
+              "$price.000đ",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 45),
               child: Row(
                 children: [
                   Icon(

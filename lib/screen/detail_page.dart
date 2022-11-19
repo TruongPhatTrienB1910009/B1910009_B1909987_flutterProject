@@ -129,7 +129,7 @@ class _DetailPageState extends State<DetailPage> {
                         ],
                       ),
                       Text(
-                        "\$ ${widget.price * quantity}",
+                        "${widget.price * quantity}.000đ",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       )
                     ],

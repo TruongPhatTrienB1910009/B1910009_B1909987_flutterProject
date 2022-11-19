@@ -42,7 +42,8 @@ class _HomePageState extends State<HomePage> {
             height: 60,
             width: 70,
             decoration: BoxDecoration(
-              image: DecorationImage(image: NetworkImage(image)),
+              image: DecorationImage(
+                  image: NetworkImage(image), fit: BoxFit.cover),
               color: Colors.grey,
               borderRadius: BorderRadius.circular(10),
             ),
@@ -330,9 +331,9 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 burger(),
-                recipe(),
                 pizza(),
                 drink(),
+                recipe(),
               ],
             ),
           ),
