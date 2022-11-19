@@ -23,6 +23,9 @@ class _HomePageState extends State<HomePage> {
 
   List<FoodModle> singleFoodList = [];
   List<FoodCategoriesModle> burgerCategoriesList = [];
+  List<FoodCategoriesModle> recipeCategoriesList = [];
+  List<FoodCategoriesModle> pizzaCategoriesList = [];
+  List<FoodCategoriesModle> drinkCategoriesList = [];
 
   Widget categoriesContainer({
     required VoidCallback onTap,
@@ -102,7 +105,15 @@ class _HomePageState extends State<HomePage> {
       children: recipeList
           .map(
             (e) => categoriesContainer(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => Categories(
+                      list: recipeCategoriesList,
+                    ),
+                  ),
+                );
+              },
               image: e.image,
               name: e.name,
             ),
@@ -116,7 +127,15 @@ class _HomePageState extends State<HomePage> {
       children: pizzaList
           .map(
             (e) => categoriesContainer(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => Categories(
+                      list: pizzaCategoriesList,
+                    ),
+                  ),
+                );
+              },
               image: e.image,
               name: e.name,
             ),
@@ -130,7 +149,15 @@ class _HomePageState extends State<HomePage> {
       children: drinkList
           .map(
             (e) => categoriesContainer(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => Categories(
+                      list: drinkCategoriesList,
+                    ),
+                  ),
+                );
+              },
               image: e.image,
               name: e.name,
             ),
@@ -167,6 +194,18 @@ class _HomePageState extends State<HomePage> {
     //
     provider.getBurgerCategoriesList();
     burgerCategoriesList = provider.throwBurgerCategoriesList;
+
+    //
+    provider.getrecipeCategoriesList();
+    recipeCategoriesList = provider.throwRecipeCategoriesList;
+
+    //
+    provider.getPizzaCategoriesList();
+    pizzaCategoriesList = provider.throwPizzaCategoriesList;
+
+    //
+    provider.getDrinkCategoriesList();
+    drinkCategoriesList = provider.throwDrinkCategoriesList;
 
     return Scaffold(
       drawer: Drawer(
