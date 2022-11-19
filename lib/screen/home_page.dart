@@ -231,22 +231,10 @@ class _HomePageState extends State<HomePage> {
                   accountName: Text("Burger"),
                   accountEmail: Text('Trienb1910009@gmail.com'),
                 ),
-                drawerItem(
-                  icon: Icons.person,
-                  name: "Profile",
-                ),
-                drawerItem(
-                  icon: Icons.add_shopping_cart,
-                  name: "Cart",
-                ),
-                drawerItem(
-                  icon: Icons.shop,
-                  name: "Order",
-                ),
-                Divider(
-                  thickness: 2,
-                  color: Colors.white,
-                ),
+                drawerItem(icon: Icons.person, name: "Profile"),
+                drawerItem(icon: Icons.add_shopping_cart, name: "Cart"),
+                drawerItem(icon: Icons.shop, name: "Order"),
+                Divider(thickness: 2, color: Colors.white),
                 ListTile(
                   leading: Text(
                     "Comunicate",
@@ -256,37 +244,20 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                // Text(
-                //   "Comunicate",
-                //   style: TextStyle(
-                //     color: Colors.white,
-                //     fontSize: 20,
-                //   ),
-                // ),
-                drawerItem(
-                  icon: Icons.lock,
-                  name: "Change",
-                ),
-                // drawerItem(
-                //   icon: Icons.exit_to_app,
-                //   name: "Log out",
-                // ),
+                drawerItem(icon: Icons.lock, name: "Change"),
                 ListTile(
-                  leading: Icon(
-                    Icons.exit_to_app,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Log out",
-                    style: TextStyle(
-                      fontSize: 20,
+                    leading: Icon(
+                      Icons.exit_to_app,
                       color: Colors.white,
                     ),
-                  ),
-                  onTap: () {
-                    authprovider.logout();
-                  },
-                ),
+                    title: Text("Log out",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        )),
+                    onTap: () {
+                      authprovider.logout();
+                    }),
               ],
             ),
           ),
@@ -294,7 +265,6 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: AppBar(
         elevation: 0.0,
-        // leading: Icon(Icons.sort),
         actions: [
           Padding(
             padding: const EdgeInsets.all(9.0),
@@ -367,28 +337,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                   .toList(),
-              // children: [
-              //   bottonContainer(
-              //     image: 'images/1.png',
-              //     name: 'burger1',
-              //     price: 12,
-              //   ),
-              //   bottonContainer(
-              //     image: 'images/1.png',
-              //     name: 'burger1',
-              //     price: 12,
-              //   ),
-              //   bottonContainer(
-              //     image: 'images/1.png',
-              //     name: 'burger1',
-              //     price: 12,
-              //   ),
-              //   bottonContainer(
-              //     image: 'images/1.png',
-              //     name: 'burger1',
-              //     price: 12,
-              //   ),
-              // ],
             ),
           )
         ],

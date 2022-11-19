@@ -16,12 +16,15 @@ class CartPage extends StatelessWidget {
   }) {
     return Row(
       children: [
-        Container(
-          width: 170,
-          height: 170,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(image),
+        GestureDetector(
+          child: Container(
+            width: 170,
+            height: 170,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(image),
+            ),
           ),
+          onTap: () {},
         ),
         SizedBox(
           width: 20,
@@ -142,5 +145,12 @@ class CartPage extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class goToDetailPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }
