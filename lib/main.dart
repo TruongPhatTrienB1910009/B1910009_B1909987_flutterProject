@@ -40,17 +40,16 @@ class MyApp extends StatelessWidget {
                 appBarTheme: AppBarTheme(
                   color: Color(0xff2b2b2b),
                 )),
-            home: CartPage(),
-            // home: authManager.isAuth
-            //     ? HomePage()
-            //     : FutureBuilder(
-            //         future: authManager.tryAutoLogin(),
-            //         builder: (ctx, snapshot) {
-            //           return snapshot.connectionState == ConnectionState.waiting
-            //               ? const SplashScreen()
-            //               : const AuthScreen();
-            //         },
-            //       ),
+            home: authManager.isAuth
+                ? HomePage()
+                : FutureBuilder(
+                    future: authManager.tryAutoLogin(),
+                    builder: (ctx, snapshot) {
+                      return snapshot.connectionState == ConnectionState.waiting
+                          ? const SplashScreen()
+                          : const AuthScreen();
+                    },
+                  ),
           );
         },
       ),

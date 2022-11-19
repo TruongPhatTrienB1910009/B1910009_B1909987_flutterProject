@@ -7,29 +7,108 @@ import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   @override
+  Widget cartItem({
+    required String image,
+    required String name,
+    required int price,
+    required VoidCallback? onTap,
+    required int quantity,
+  }) {
+    return Row(
+      children: [
+        Container(
+          width: 170,
+          height: 170,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(image),
+          ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        Expanded(
+            child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            Container(
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "burger bhout acha hain",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    "\$ $price",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "$quantity",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.close, color: Colors.white),
+              onPressed: onTap,
+            )
+          ],
+        )),
+      ],
+    );
+  }
+
   Widget build(BuildContext context) {
+    MyProvider provider = Provider.of<MyProvider>(context);
+    int total = provider.totalprice();
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(bottom: 20, right: 20, left: 20),
+        margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
         padding: EdgeInsets.symmetric(horizontal: 10),
         height: 65,
         decoration: BoxDecoration(
-          color: Color(0xff3a3e3e),
-          borderRadius: BorderRadius.circular(10),
-        ),
+            color: Color(0xff3a3e3e), borderRadius: BorderRadius.circular(10)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "\$23",
-              style: TextStyle(fontSize: 30, color: Colors.white),
+              "\$ $total",
+              style: TextStyle(color: Colors.white, fontSize: 30),
             ),
-            Text(
-              "check out",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+            Container(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(color: Colors.green, width: 2),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                onPressed: () {},
+                child: Text(
+                  "Check out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             )
           ],
@@ -38,97 +117,29 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          },
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 170,
-                height: 170,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("images/1.png"),
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                  child: Stack(
-                children: [
-                  Container(
-                    height: 200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Burger",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "Burger king is very good",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "\$12",
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: null,
-                              icon: Icon(
-                                Icons.remove_circle_outline,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
-                            Text(
-                              "1",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            IconButton(
-                              onPressed: null,
-                              icon: Icon(
-                                Icons.add_circle_outline,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.close,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ))
-            ],
-          )
-        ],
+      body: ListView.builder(
+        itemCount: provider.cartList.length,
+        itemBuilder: (ctx, index) {
+          provider.getDeleteIndex(index);
+          return cartItem(
+            onTap: () {
+              provider.delete();
+            },
+            image: provider.cartList[index].image,
+            name: provider.cartList[index].name,
+            price: provider.cartList[index].price,
+            quantity: provider.cartList[index].quantity,
+          );
+        },
       ),
     );
   }
