@@ -7,6 +7,7 @@ import 'package:orderfood/models/food_modle.dart';
 import 'package:orderfood/provider/my_provider.dart';
 import 'package:orderfood/screen/auth/auth_manager.dart';
 import 'package:orderfood/screen/categories.dart';
+import 'package:orderfood/screen/detail_page.dart';
 import 'package:orderfood/screen/widget/bottom_Contianer.dart';
 import 'package:provider/provider.dart';
 
@@ -351,7 +352,17 @@ class _HomePageState extends State<HomePage> {
                       image: e.image,
                       price: e.price,
                       name: e.name,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => DetailPage(
+                              image: e.image,
+                              name: e.name,
+                              price: e.price,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   )
                   .toList(),

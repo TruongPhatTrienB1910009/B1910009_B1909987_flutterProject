@@ -1,8 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:orderfood/screen/home_page.dart';
 
 class DetailPage extends StatelessWidget {
+  final String name;
+  final String image;
+  final int price;
+  DetailPage({required this.name, required this.image, required this.price});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +18,13 @@ class DetailPage extends StatelessWidget {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          },
         ),
       ),
       body: Column(
@@ -21,7 +32,7 @@ class DetailPage extends StatelessWidget {
           Expanded(
             child: CircleAvatar(
               radius: 100,
-              backgroundImage: AssetImage('images/1.png'),
+              backgroundImage: NetworkImage(image),
             ),
           ),
           Expanded(
@@ -41,7 +52,7 @@ class DetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Neapolitan",
+                    name,
                     style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -93,7 +104,7 @@ class DetailPage extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        "\$ 150",
+                        "\$ $price",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       )
                     ],

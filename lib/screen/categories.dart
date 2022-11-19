@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orderfood/models/food_categories_modle.dart';
+import 'package:orderfood/screen/detail_page.dart';
 import 'package:orderfood/screen/home_page.dart';
 import 'package:orderfood/screen/widget/bottom_Contianer.dart';
 
@@ -17,7 +18,10 @@ class Categories extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomePage()));
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
           },
         ),
       ),
@@ -34,7 +38,17 @@ class Categories extends StatelessWidget {
                 image: e.image,
                 price: e.price,
                 name: e.name,
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => DetailPage(
+                        image: e.image,
+                        price: e.price,
+                        name: e.name,
+                      ),
+                    ),
+                  );
+                },
               ),
             )
             .toList(),
