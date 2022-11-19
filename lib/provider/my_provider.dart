@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:orderfood/models/categories_modle.dart';
+import 'package:orderfood/models/food_categories_modle.dart';
 import 'package:orderfood/models/food_modle.dart';
 
 class MyProvider extends ChangeNotifier {
@@ -130,5 +131,31 @@ class MyProvider extends ChangeNotifier {
 
   get throwFoodModleList {
     return foodModeList;
+  }
+
+  ///////////////burger categories list//////////
+  List<FoodCategoriesModle> burgerCategoriesList = [];
+  late FoodCategoriesModle burgerCategoriesModle;
+  Future<void> getBurgerCategoriesList() async {
+    List<FoodCategoriesModle> newBurgerCategoriesList = [];
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('foodcategories')
+        .doc('J5XYAM4w1YaC2LidvKz4')
+        .collection('burger')
+        .get();
+    querySnapshot.docs.forEach((element) {
+      burgerCategoriesModle = FoodCategoriesModle(
+        image: element['image'],
+        name: element['name'],
+        price: element['price'],
+      );
+      newBurgerCategoriesList.add(burgerCategoriesModle);
+      burgerCategoriesList = newBurgerCategoriesList;
+    });
+    print(burgerCategoriesModle.name);
+  }
+
+  get throwBurgerCategoriesList {
+    return burgerCategoriesList;
   }
 }
