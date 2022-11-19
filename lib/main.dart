@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:orderfood/provider/my_provider.dart';
+import 'package:orderfood/screen/detail_page.dart';
 import 'package:orderfood/screen/home_page.dart';
 import 'package:provider/provider.dart';
 
@@ -38,17 +39,17 @@ class MyApp extends StatelessWidget {
                 appBarTheme: AppBarTheme(
                   color: Color(0xff2b2b2b),
                 )),
-            // home: LoginPage(),
-            home: authManager.isAuth
-                ? HomePage()
-                : FutureBuilder(
-                    future: authManager.tryAutoLogin(),
-                    builder: (ctx, snapshot) {
-                      return snapshot.connectionState == ConnectionState.waiting
-                          ? const SplashScreen()
-                          : const AuthScreen();
-                    },
-                  ),
+            home: DetailPage(),
+            // home: authManager.isAuth
+            //     ? HomePage()
+            //     : FutureBuilder(
+            //         future: authManager.tryAutoLogin(),
+            //         builder: (ctx, snapshot) {
+            //           return snapshot.connectionState == ConnectionState.waiting
+            //               ? const SplashScreen()
+            //               : const AuthScreen();
+            //         },
+            //       ),
           );
         },
       ),
