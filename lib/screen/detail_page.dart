@@ -52,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xff3a3e3e),
+                color: Color.fromARGB(255, 62, 62, 58),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10),

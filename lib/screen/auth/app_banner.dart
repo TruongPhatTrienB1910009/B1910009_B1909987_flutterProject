@@ -15,7 +15,7 @@ class AppBanner extends StatelessWidget {
         vertical: 8.0,
         horizontal: 94.0,
       ),
-      transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
+      // transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.deepOrange.shade900,
@@ -28,12 +28,12 @@ class AppBanner extends StatelessWidget {
         ],
       ),
       child: Text(
-        'MyShop',
+        'BURGER KING',
         style: TextStyle(
           color: Theme.of(context).textTheme.headline6?.color,
-          fontSize: 50,
+          fontSize: 30,
           fontFamily: 'Anton',
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

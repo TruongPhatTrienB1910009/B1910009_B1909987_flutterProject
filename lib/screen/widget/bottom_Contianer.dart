@@ -20,7 +20,8 @@ class BottomContainer extends StatelessWidget {
         height: 270,
         width: 220,
         decoration: BoxDecoration(
-            color: Color(0xff3a3e3e), borderRadius: BorderRadius.circular(20)),
+            color: Color.fromARGB(255, 241, 251, 206),
+            borderRadius: BorderRadius.circular(20)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -30,13 +31,16 @@ class BottomContainer extends StatelessWidget {
             ),
             Text(
               name,
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(
+                fontSize: 20,
+                color: Color.fromARGB(255, 34, 24, 24),
+              ),
             ),
             Text(
               "$price.000đ",
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.white,
+                color: Color.fromARGB(255, 34, 24, 24),
               ),
             ),
             Padding(
@@ -46,27 +50,27 @@ class BottomContainer extends StatelessWidget {
                   Icon(
                     Icons.star,
                     size: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 34, 24, 24),
                   ),
                   Icon(
                     Icons.star,
                     size: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 34, 24, 24),
                   ),
                   Icon(
                     Icons.star,
                     size: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 34, 24, 24),
                   ),
                   Icon(
                     Icons.star,
                     size: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 34, 24, 24),
                   ),
                   Icon(
                     Icons.star,
                     size: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 34, 24, 24),
                   )
                 ],
               ),

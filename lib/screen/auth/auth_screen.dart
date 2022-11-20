@@ -12,20 +12,16 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  const Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  const Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: const [0, 1],
-              ),
+            decoration: const BoxDecoration(
+              //
+              image: DecorationImage(
+                  image: NetworkImage(
+                      'https://img.idesign.vn/2021/01/burger-king-logo-rebrand-bk-jkr_dezeen_2364_hero_2.jpg'),
+                  fit: BoxFit.cover),
             ),
           ),
           SingleChildScrollView(

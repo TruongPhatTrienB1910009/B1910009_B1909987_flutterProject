@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 15,
-            color: Colors.white,
+            color: Color.fromARGB(255, 34, 24, 24),
           ),
         )
       ],
@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(
         child: Container(
-          color: Color(0xff2b2b2b),
+          color: Color.fromARGB(255, 134, 171, 210),
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,13 +298,13 @@ class _HomePageState extends State<HomePage> {
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Search Food",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.black),
                 prefixIcon: Icon(
                   Icons.search,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 filled: true,
-                fillColor: Color(0xff3a3e3e),
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(50),

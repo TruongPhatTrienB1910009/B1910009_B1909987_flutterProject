@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
-                scaffoldBackgroundColor: Color(0xff2b2b2b),
+                scaffoldBackgroundColor: Color.fromARGB(255, 228, 237, 124),
                 appBarTheme: AppBarTheme(
-                  color: Color(0xff2b2b2b),
+                  color: Color.fromARGB(255, 236, 51, 51),
                 )),
             home: authManager.isAuth
                 ? HomePage()

@@ -106,7 +106,7 @@ class CartPage extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text(
-                  "Check out",
+                  "Order",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
