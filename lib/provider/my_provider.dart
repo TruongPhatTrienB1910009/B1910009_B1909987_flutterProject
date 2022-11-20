@@ -276,4 +276,9 @@ class MyProvider extends ChangeNotifier {
     cartList.removeAt(deleteIndex);
     notifyListeners();
   }
+
+  void clear() {
+    cartList = [];
+    notifyListeners();
+  }
 }

@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     MyProvider provider = Provider.of<MyProvider>(context);
 
-    final authprovider = Provider.of<AuthManager>(context);
+    AuthManager authprovider = Provider.of<AuthManager>(context);
     //
     provider.getBurgerCategory();
     burgerList = provider.throwBurgerList;
@@ -271,7 +271,10 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                       )),
                   onTap: () {
-                    authprovider.logout();
+                    Navigator.of(context)
+                      ..pop()
+                      ..pushReplacementNamed('/');
+                    context.read<AuthManager>().logout();
                   },
                 ),
               ],

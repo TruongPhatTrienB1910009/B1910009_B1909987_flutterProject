@@ -104,7 +104,9 @@ class CartPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  provider.clear();
+                },
                 child: Text(
                   "Order",
                   style: TextStyle(
