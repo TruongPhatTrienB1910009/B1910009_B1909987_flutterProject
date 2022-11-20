@@ -6,6 +6,7 @@ import 'package:orderfood/models/food_categories_modle.dart';
 import 'package:orderfood/models/food_modle.dart';
 import 'package:orderfood/provider/my_provider.dart';
 import 'package:orderfood/screen/auth/auth_manager.dart';
+import 'package:orderfood/screen/cart_page.dart';
 import 'package:orderfood/screen/categories.dart';
 import 'package:orderfood/screen/detail_page.dart';
 import 'package:orderfood/screen/widget/bottom_Contianer.dart';
@@ -61,22 +62,6 @@ class _HomePageState extends State<HomePage> {
           ),
         )
       ],
-    );
-  }
-
-  Widget drawerItem({required String name, required IconData icon}) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: Colors.white,
-      ),
-      title: Text(
-        name,
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
-      ),
     );
   }
 
@@ -215,7 +200,6 @@ class _HomePageState extends State<HomePage> {
           color: Color(0xff2b2b2b),
           child: SafeArea(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UserAccountsDrawerHeader(
@@ -226,38 +210,70 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage('images/profile.jpg'),
+                    backgroundImage: AssetImage('images/burger-king.jpg'),
                   ),
-                  accountName: Text("Burger"),
-                  accountEmail: Text('Trienb1910009@gmail.com'),
+                  accountName: Text("Burger King"),
+                  accountEmail: Text('burgerkingvn@gmail.com'),
                 ),
-                drawerItem(icon: Icons.person, name: "Profile"),
-                drawerItem(icon: Icons.add_shopping_cart, name: "Cart"),
-                drawerItem(icon: Icons.shop, name: "Order"),
-                Divider(thickness: 2, color: Colors.white),
+                SizedBox(
+                  height: 40,
+                ),
                 ListTile(
-                  leading: Text(
-                    "Comunicate",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
+                  leading: Icon(
+                    Icons.home_filled,
+                    color: Colors.white,
                   ),
+                  title: Text("Trang Chủ",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      )),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
+                  },
                 ),
-                drawerItem(icon: Icons.lock, name: "Change"),
+                SizedBox(
+                  height: 40,
+                ),
                 ListTile(
-                    leading: Icon(
-                      Icons.exit_to_app,
-                      color: Colors.white,
-                    ),
-                    title: Text("Log out",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        )),
-                    onTap: () {
-                      authprovider.logout();
-                    }),
+                  leading: Icon(
+                    Icons.shopping_cart_checkout,
+                    color: Colors.white,
+                  ),
+                  title: Text("Giỏ Hàng",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      )),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => CartPage(),
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.white,
+                  ),
+                  title: Text("Thoát",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      )),
+                  onTap: () {
+                    authprovider.logout();
+                  },
+                ),
               ],
             ),
           ),
@@ -269,7 +285,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.all(9.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+              backgroundImage: AssetImage('images/burger-king.jpg'),
             ),
           )
         ],

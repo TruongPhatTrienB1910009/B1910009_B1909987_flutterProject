@@ -42,12 +42,12 @@ class _DetailPageState extends State<DetailPage> {
         children: [
           Expanded(
             child: CircleAvatar(
-              radius: 100,
+              radius: 180,
               backgroundImage: NetworkImage(widget.image),
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               width: double.infinity,
@@ -70,10 +70,8 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                   Text(
-                    "Any text..",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+                    "Chúng tôi sẽ luôn mang đến những món ăn đảm bảo vệ sinh an toàn thực phẩm cho khách hàng.",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,18 +131,6 @@ class _DetailPageState extends State<DetailPage> {
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       )
                     ],
-                  ),
-                  Text(
-                    "Description",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "Food delivery apps are the new favorite of the people and that is the final verdict. The ease food delivery apps offer to the people who don’t want to cook at the end of the day is what makes it more loved than any other apps out there. But what more do you need to know before you start building your food delivery app?",
-                    style: TextStyle(color: Colors.white),
                   ),
                   Container(
                     height: 55,
