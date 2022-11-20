@@ -47,7 +47,7 @@ class CartPage extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "burger bhout acha hain",
+                    "Burger King",
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(
@@ -108,7 +108,7 @@ class CartPage extends StatelessWidget {
                   provider.clear();
                 },
                 child: Text(
-                  "Order",
+                  "Gọi Món",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

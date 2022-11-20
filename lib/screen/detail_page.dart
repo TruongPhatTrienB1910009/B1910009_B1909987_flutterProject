@@ -166,7 +166,7 @@ class _DetailPageState extends State<DetailPage> {
                             width: 10,
                           ),
                           Text(
-                            "Add to cart",
+                            "Thêm vào Giỏ",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           )
                         ],

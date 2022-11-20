@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Search Food",
+                hintText: "Tìm Kiếm",
                 hintStyle: TextStyle(color: Colors.black),
                 prefixIcon: Icon(
                   Icons.search,
